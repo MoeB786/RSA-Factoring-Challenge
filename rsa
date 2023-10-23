@@ -4,15 +4,20 @@ from sys import argv
 def factorize(num):
     factors = []
     
+    # Handle factors of 2
     while num % 2 == 0:
         factors.append(2)
         num //= 2
     
-    for i in range(3, int(num**0.5) + 1, 2):
-        while num % i == 0:
-            factors.append(i)
-            num //= i
+    # Handle remaining prime factors
+    div = 3
+    while div * div <= num:
+        while num % div == 0:
+            factors.append(div)
+            num //= div
+        div += 2  # Skip even divisors
     
+    # If num is still greater than 1, it's a prime factor
     if num > 1:
         factors.append(num)
     

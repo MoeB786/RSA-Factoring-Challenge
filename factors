@@ -17,13 +17,16 @@ def open_read_file(file_name):
 
 
 def find_and_times(n):
-    """factor each
-    n given
-    """
-    for i in range(1, n):
-        if n == ((n // i) * i):
-            print("{}={}*{}".format(n, (n // i), i))
-            break
+    """ Factor the given number """
+    if n == 1:
+        print("1=1*1")
+    else:
+        for i in range(2, n + 1):
+            while n % i == 0:
+                n //= i
+                print(f"{n * i}={n}*{i}")
+            if n == 1:
+                break
 
 
 def fac_list(ls):
